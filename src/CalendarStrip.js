@@ -145,7 +145,7 @@ class CalendarStrip extends Component {
       datesList: [],
       dayComponentWidth: 0,
       height: 0,
-      monthFontSize: 0,
+      monthFontSize: 1, // Prevent font size 0
       selectorSize: 0,
       numVisibleDays: props.numDaysInWeek,
     };
@@ -385,7 +385,7 @@ class CalendarStrip extends Component {
       marginHorizontal = Math.round(dayComponentWidth * 0.05);
       dayComponentWidth = Math.round(dayComponentWidth * 0.9);
     }
-    let monthFontSize = Math.round(dayComponentWidth / 3.2);
+    let monthFontSize = Math.max(Math.round(dayComponentWidth / 3.2), 1); // Prevent font size 0
     let selectorSize = Math.round(dayComponentWidth / 2.5);
     let height = showMonth ? monthFontSize : 0;
     height += showDate ? dayComponentHeight || dayComponentWidth : 0;
